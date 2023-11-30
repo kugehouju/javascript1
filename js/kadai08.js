@@ -9,17 +9,19 @@ function showSlider(index) {
     });
 }
 
-setInterval(() => {
-    currentIndex = (currentIndex + 1) % slider.length;
-    showSlider(currentIndex);
-}, 3000)
-
 next.addEventListener("click", () => {
     currentIndex = (currentIndex + 1 ) % slider.length; 
     showSlider(currentIndex);
+    clearInterval(interval);
 })
 
 prev.addEventListener("click", () => {
     currentIndex = (currentIndex - 1 + slider.length) % slider.length;
     showSlider(currentIndex);
+    clearInterval(interval);
 })
+
+let interval = setInterval(() => {
+    currentIndex = (currentIndex + 1) % slider.length;
+    showSlider(currentIndex);
+}, 3000)
